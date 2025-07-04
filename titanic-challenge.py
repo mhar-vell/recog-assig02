@@ -2,6 +2,8 @@
 
 import pandas as pd
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
@@ -76,6 +78,17 @@ X_train = data[:len(train)]
 X_test = data[len(train):]
 y_train = train["Survived"]
 
+print(X_train.info())
+print(X_train.isnull().sum())
+
+print(X_train.describe())
+
+
+plt.figure(figsize=(12,8))
+sns.heatmap(X_train.corr(), annot=True, fmt=".2f", cmap="coolwarm")
+plt.title("Feature Correlation Matrix")
+plt.show()
+
 # === Modeling ===
 
 # Logistic Regression
@@ -91,6 +104,19 @@ print(f"Random Forest CV score: {rf_score:.4f}")
 # Train final model and predict
 rf.fit(X_train, y_train)
 predictions = rf.predict(X_test)
+
+# === Feature Importance Plot ===
+import matplotlib.pyplot as plt
+importances = rf.feature_importances_
+indices = np.argsort(importances)[::-1]
+feature_names_plot = X_train.columns
+
+plt.figure(figsize=(10, 6))
+plt.title("Feature Importances (Random Forest)")
+plt.bar(range(X_train.shape[1]), importances[indices])
+plt.xticks(range(X_train.shape[1]), feature_names_plot[indices], rotation=90)
+plt.tight_layout()
+plt.show()
 
 # === Submission ===
 
