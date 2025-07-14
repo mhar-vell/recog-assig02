@@ -1,3 +1,46 @@
+# Titanic SVM Project
+
+This project aims to predict survival on the Titanic using a Support Vector Machine (SVM) model. The dataset includes features such as passenger demographics and ticket information, which are used to train the model.
+
+## Project Structure
+
+- **data/**: Contains the datasets used for training and testing.
+  - `train.csv`: The training dataset with features and target variable (survival status).
+  - `test.csv`: The test dataset for making predictions.
+  - `gender_submission.csv`: A sample submission file predicting survival based on gender.
+
+- **src/**: Contains the source code for the project.
+  - `svm_solution.py`: Implements the SVM solution, including data loading, preprocessing, model training, and evaluation.
+  - `utils.py`: Contains utility functions for data preprocessing and feature engineering.
+
+- **requirements.txt**: Lists the dependencies required for the project, including libraries such as scikit-learn, pandas, and numpy.
+
+## Setup Instructions
+
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd titanic-svm
+   ```
+
+2. Install the required packages:
+   ```
+   pip install -r requirements.txt
+   ```
+
+## Usage
+
+To run the SVM solution, execute the following command:
+```
+python src/svm_solution.py
+```
+
+This will load the data, preprocess it, train the SVM model, and evaluate its performance.
+
+## License
+
+This project is licensed under the MIT License.
+
 ### List of packages installed in the environment
 <!-- []: # - numpy
 []: # - matplotlib
@@ -118,5 +161,38 @@ mamba list
   zipp                     3.23.0        pyhd8ed1ab_0          conda-forge
   zstd                     1.5.7         h6491c7d_2            conda-forge
   ````
+### Best accuracy notebook
+ - titanic-enhanced.ipynb
+  
 
+### How to create a Python environment with the required packages
+```bash# Create a new environment named 'sklearn-env'
+mamba create -n sklearn-env python=3.13 scikit-learn pandas matplotlib seaborn mlxtend  
+# Activate the environment
+mamba activate sklearn-env
+# Install additional packages if needed
+mamba install -c conda-forge numpy
+# Verify the installation
+mamba list
+```
 
+### Best practices for managing Python environments
+- Use `mamba` for faster environment management.
+- Regularly update packages to keep the environment secure and efficient.
+- Create isolated environments for different projects to avoid dependency conflicts.
+- Document the environment setup in a `README.md` file for reproducibility.
+- Use `conda` or `mamba` to manage dependencies and ensure compatibility.
+- Use version control (e.g., Git) to track changes in the environment configuration.
+- Consider using `environment.yml` files to define the environment, which can be easily shared and recreated.
+- Regularly back up the environment configuration to avoid losing setup details.
+- Use virtual environments to isolate project dependencies.
+- Test the environment setup on different machines to ensure portability.
+- Use `pip freeze` or `conda list` to capture the current state of the environment.
+- Avoid installing packages globally; prefer local installations within the environment.
+- Use `conda` channels to manage package sources and ensure compatibility.
+- Regularly clean up unused packages to keep the environment lean.
+- Use `conda env export` to create a snapshot of the environment for future reference.
+- Use `conda env create -f environment.yml` to recreate the environment from a configuration file.
+- Monitor the environment for security vulnerabilities and update packages as needed.
+- Use `conda activate` to switch between environments easily.
+- Use `conda deactivate` to exit the current environment. 
